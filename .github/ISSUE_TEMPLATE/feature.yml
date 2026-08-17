@@ -30,10 +30,19 @@ body:
       label: Conservative semantics and cross-format impact
     validations:
       required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: Synthetic proof and test plan
+      description: Describe the smallest repository tree that would fail before the change and pass after it.
+    validations:
+      required: true
   - type: checkboxes
     id: boundaries
     attributes:
       label: Boundaries
       options:
         - label: The proposal can use synthetic fixtures and does not infer undocumented natural-language conflicts.
+          required: true
+        - label: I checked the roadmap and issue seeds for an existing scoped proposal.
           required: true

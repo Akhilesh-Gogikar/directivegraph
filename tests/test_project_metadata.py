@@ -18,7 +18,7 @@ class ProjectMetadataTest(unittest.TestCase):
             "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "SUPPORT.md",
             "GOVERNANCE.md", "ROADMAP.md", "CHANGELOG.md", "ECOSYSTEM.md", "pyproject.toml",
             "docs/ARCHITECTURE.md", "docs/TROUBLESHOOTING.md", "docs/API_STABILITY.md",
-            "docs/PRIVACY.md", "docs/ACCESSIBILITY.md", "docs/LAUNCH_KIT.md",
+            "docs/PRIVACY.md", "docs/ACCESSIBILITY.md", "docs/LAUNCH_KIT.md", "docs/ISSUE_SEEDS.md",
             ".github/ISSUE_TEMPLATE/bug.yml", ".github/ISSUE_TEMPLATE/feature.yml",
             ".github/PULL_REQUEST_TEMPLATE.md", ".github/CODEOWNERS", ".github/dependabot.yml",
             ".github/workflows/ci.yml", ".github/workflows/release.yml",
@@ -71,6 +71,16 @@ class ProjectMetadataTest(unittest.TestCase):
         ecosystem = (ROOT / "ECOSYSTEM.md").read_text(encoding="utf-8")
         self.assertEqual(7, len(set(re.findall(r"github\.com/akigogikar/([a-z0-9-]+)", ecosystem))))
         self.assertIn("optional and informational", ecosystem)
+
+    def test_launch_materials_are_complete_and_scoped(self):
+        seeds = (ROOT / "docs/ISSUE_SEEDS.md").read_text(encoding="utf-8")
+        self.assertEqual(5, len(re.findall(r"^## \d+\. ", seeds, re.MULTILINE)))
+        for field in ("**Proposed title:**", "**Labels:**", "**Rationale:**", "**Acceptance criteria**", "**Test plan:**", "**Skills:**", "**Estimated scope:**", "**Likely files:**"):
+            self.assertEqual(5, seeds.count(field), field)
+        launch = (ROOT / "docs/LAUNCH_KIT.md").read_text(encoding="utf-8")
+        for section in ("### Hacker News", "### Reddit", "### LinkedIn", "### X", "## FAQ", "## Launch-day checklist", "## First 30 days"):
+            self.assertIn(section, launch)
+        self.assertIn("Never claim", launch)
 
 
 if __name__ == "__main__":

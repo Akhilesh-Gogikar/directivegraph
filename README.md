@@ -3,13 +3,15 @@
 [![CI](https://github.com/akigogikar/directivegraph/actions/workflows/ci.yml/badge.svg)](https://github.com/akigogikar/directivegraph/actions/workflows/ci.yml)
 [![GitHub License](https://img.shields.io/github/license/akigogikar/directivegraph)](LICENSE)
 
-Path-specific traces for documented repository agent instruction files.
+![DirectiveGraph social preview: a hierarchy showing which instructions reach a file](docs/assets/social-preview.png)
 
-> **Status: alpha launch candidate.** The repository remains private and must not be published, announced, tagged, or released until the launch gate in [docs/LAUNCH_KIT.md](docs/LAUNCH_KIT.md) is explicitly approved.
+**Ask one file which instructions reach it—and why.** DirectiveGraph turns a repository path into a conservative, source-linked precedence trace.
+
+> **Status: 0.1.0 alpha.** Source installation is supported; no package registry publication has occurred. See the evidence and limitations in [docs/LAUNCH_KIT.md](docs/LAUNCH_KIT.md).
 
 ## Why
 
-Nested instruction files create path-specific behavior that is difficult to explain. DirectiveGraph shows applicable sources, documented same-directory overrides, closer-source precedence candidates, extracted rules, and reasons—without pretending it can understand natural-language conflicts.
+Nested instruction files create path-specific behavior that is difficult to explain. DirectiveGraph shows applicable sources, documented same-directory overrides, closer-source precedence candidates, extracted rules, and reasons—without pretending it understands natural-language conflicts.
 
 ## Install from source
 
@@ -33,6 +35,13 @@ directivegraph fixtures/05_public_names/deep/src/task.py \
   --root fixtures/05_public_names --format html --output /tmp/directivegraph.html
 ```
 
+## What makes it different
+
+- **One target, one explanation:** the report is scoped to a specific path instead of dumping every instruction file.
+- **Conservative by construction:** documented overrides are explicit; uncertain relationships remain precedence candidates.
+- **Cross-format honesty:** each format is ordered independently and no cross-vendor precedence is invented.
+- **Easy to inspect:** text, deterministic JSON, DOT, and self-contained HTML come from the same local analysis.
+
 ## Input and output
 
 - Conservative root-to-target scanning for the documented filenames in [docs/SEMANTICS.md](docs/SEMANTICS.md).
@@ -53,7 +62,11 @@ directivegraph fixtures/05_public_names/deep/src/task.py \
 - [Architecture](docs/ARCHITECTURE.md) · [semantics](docs/SEMANTICS.md) · [API stability](docs/API_STABILITY.md)
 - [Privacy](docs/PRIVACY.md) · [accessibility](docs/ACCESSIBILITY.md) · [troubleshooting](docs/TROUBLESHOOTING.md)
 - [Roadmap](ROADMAP.md) · [changelog](CHANGELOG.md) · [launch kit](docs/LAUNCH_KIT.md)
-- [Scope](SCOPE.md) · [provenance](PROVENANCE.md) · [ecosystem](ECOSYSTEM.md)
+- [Scope](SCOPE.md) · [provenance](PROVENANCE.md) · [ecosystem](ECOSYSTEM.md) · [issue seeds](docs/ISSUE_SEEDS.md)
+
+## A focused contribution is welcome
+
+Start with one of the five code-aware [issue seeds](docs/ISSUE_SEEDS.md), add a synthetic ancestry case, or challenge a precedence claim with a public primary source. The [contribution pathways](CONTRIBUTING.md#contribution-pathways) explain scope, review expectations, and recognition. Please never upload private repository instructions.
 
 ## Community and security
 

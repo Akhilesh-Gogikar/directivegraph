@@ -4,7 +4,9 @@ Describe the user-visible discovery, precedence, parser, renderer, or documentat
 
 ## Why
 
-Link the issue and public primary documentation for every semantic claim.
+Link the issue or issue seed and public primary documentation for every semantic claim. State why this is the smallest useful change.
+
+Closes #
 
 ## Clean-room and privacy
 
@@ -21,3 +23,7 @@ Link the issue and public primary documentation for every semantic claim.
 ## Compatibility
 
 State report-schema, CLI, documented-semantics, cross-format, privacy, and performance effects. Confirm documentation/changelog updates or explain why none are needed.
+
+## Review focus and recognition
+
+Name the riskiest semantic or filesystem assumption and the review you need most. List non-code contributors whose source research, fixture, design, accessibility, documentation, or review work should be credited, or state that there are none.
