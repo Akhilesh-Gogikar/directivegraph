@@ -230,9 +230,11 @@ def render_html(report: dict[str, Any]) -> str:
             f'<li><code>L{rule["line"]}</code> {html.escape(rule["text"])} <small>{html.escape(rule["status"])}</small></li>'
             for rule in record["rules"]
         ) or "<li><em>No instruction text extracted.</em></li>"
+        heading_id = f'heading-{record["id"]}'
         cards.append(
-            f'<article class="{record["status"]}"><header><span>{html.escape(record["format"])}</span><b>{html.escape(record["path"])}</b>'
-            f'<mark>{html.escape(record["status"])}</mark></header><p>{html.escape(record["reason"])}</p><ol>{rule_rows}</ol></article>'
+            f'<article class="{record["status"]}" aria-labelledby="{heading_id}"><header><span class="format">{html.escape(record["format"])}</span>'
+            f'<h2 id="{heading_id}">{html.escape(record["path"])}</h2><span class="status">{html.escape(record["status"])}</span></header>'
+            f'<p>{html.escape(record["reason"])}</p><ol aria-label="Extracted rules">{rule_rows}</ol></article>'
         )
     embedded = html.escape(to_json(report))
     summary = report["summary"]
@@ -240,8 +242,8 @@ def render_html(report: dict[str, Any]) -> str:
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DirectiveGraph — {html.escape(report["target"])}</title>
 <style>
-:root{{--bg:#0b1020;--panel:#151d32;--text:#eef3ff;--muted:#9facca;--accent:#7dd3fc;--shadow:#fca5a5}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,sans-serif}}main{{max-width:1000px;margin:auto;padding:32px}}h1{{margin-bottom:4px}}.lede,small{{color:var(--muted)}}.metrics{{display:flex;gap:12px;margin:24px 0}}.metric,article,details{{background:var(--panel);border-radius:10px;padding:16px}}.metric b{{display:block;font-size:24px}}article{{margin:12px 0;border-left:5px solid var(--accent)}}article.shadowed{{border-color:var(--shadow);opacity:.75}}header{{display:grid;grid-template-columns:120px 1fr auto;gap:12px;align-items:center}}header span{{color:var(--muted)}}mark{{border-radius:99px;padding:4px 8px}}li{{margin:7px 0}}details{{margin-top:20px}}pre{{overflow:auto;white-space:pre-wrap}}code{{color:#bae6fd}}
-</style></head><body><main><h1>DirectiveGraph</h1><p class="lede">Target: {html.escape(report["target"])} · conservative, per-format ancestry trace</p>
-<div class="metrics"><div class="metric"><b>{summary["applied_files"]}</b>applied files</div><div class="metric"><b>{summary["shadowed_files"]}</b>shadowed files</div><div class="metric"><b>{summary["applied_rules"]}</b>applied rules</div></div>
+:root{{--bg:#0b1020;--panel:#151d32;--text:#eef3ff;--muted:#bac5dc;--accent:#7dd3fc;--shadow:#fca5a5}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,sans-serif;line-height:1.5}}main{{max-width:1000px;margin:auto;padding:32px}}.skip{{position:absolute;left:-9999px;top:8px;background:#fff;color:#111;padding:8px;z-index:2}}.skip:focus{{left:8px}}h1{{margin-bottom:4px}}.lede,small{{color:var(--muted)}}.metrics{{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}}.metric,article,details{{background:var(--panel);border-radius:10px;padding:16px}}.metric dt{{color:var(--muted)}}.metric dd{{display:block;font-size:24px;font-weight:700;margin:0}}article{{margin:12px 0;border-left:5px solid var(--accent)}}article.shadowed{{border-color:var(--shadow)}}header{{display:grid;grid-template-columns:120px 1fr auto;gap:12px;align-items:center}}header h2{{font-size:16px;margin:0;overflow-wrap:anywhere}}.format{{color:var(--muted)}}.status{{background:#e2e8f0;color:#111827;border-radius:99px;padding:4px 8px;font-weight:700}}li{{margin:7px 0}}details{{margin-top:20px}}summary{{cursor:pointer}}summary:focus-visible,.skip:focus-visible{{outline:3px solid #fff;outline-offset:3px}}pre{{overflow:auto;white-space:pre-wrap}}code{{color:#bae6fd}}@media(max-width:600px){{main{{padding:18px}}header{{grid-template-columns:1fr}}}}
+</style></head><body><a class="skip" href="#report">Skip to report</a><main id="report"><h1>DirectiveGraph</h1><p class="lede">Target: {html.escape(report["target"])} · conservative, per-format ancestry trace</p>
+<dl class="metrics"><div class="metric"><dt>Applied files</dt><dd>{summary["applied_files"]}</dd></div><div class="metric"><dt>Shadowed files</dt><dd>{summary["shadowed_files"]}</dd></div><div class="metric"><dt>Applied rules</dt><dd>{summary["applied_rules"]}</dd></div></dl>
 {"".join(cards) if cards else '<article><em>No supported instruction files found.</em></article>'}
 <details><summary>Deterministic report JSON</summary><pre><code>{embedded}</code></pre></details></main></body></html>\n'''

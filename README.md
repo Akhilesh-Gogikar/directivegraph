@@ -1,50 +1,70 @@
 # DirectiveGraph
 
-> **Private incubation repository. Do not publish or announce yet.**
+[![CI](https://github.com/akigogikar/directivegraph/actions/workflows/ci.yml/badge.svg)](https://github.com/akigogikar/directivegraph/actions/workflows/ci.yml)
+[![GitHub License](https://img.shields.io/github/license/akigogikar/directivegraph)](LICENSE)
 
-Path-specific execution traces for nested agent instruction files.
+Path-specific traces for documented repository agent instruction files.
 
-## Problem
+> **Status: alpha launch candidate.** The repository remains private and must not be published, announced, tagged, or released until the launch gate in [docs/LAUNCH_KIT.md](docs/LAUNCH_KIT.md) is explicitly approved.
 
-Nested AGENTS.md, CLAUDE.md, skills, hooks, and vendor rules create file-specific precedence that developers cannot explain.
+## Why
 
-## MVP
+Nested instruction files create path-specific behavior that is difficult to explain. DirectiveGraph shows applicable sources, documented same-directory overrides, closer-source precedence candidates, extracted rules, and reasons—without pretending it can understand natural-language conflicts.
 
-- Scans root-to-target ancestry for documented Codex, Claude Code, Gemini CLI, and GitHub Copilot repository instruction filenames.
-- Reports applied files/rules, documented same-directory Codex overrides, closer-source precedence candidates, and explicit reasons.
-- Emits deterministic JSON, readable text, self-contained HTML, or Graphviz DOT without hosted services or dependencies.
+## Install from source
 
-## Quickstart
-
-Python 3.10+ is the only requirement.
+Python 3.10–3.14 is supported. There are no runtime dependencies and no network calls at runtime.
 
 ```sh
-python3 -m directivegraph fixtures/03_override/src/main.py \
+python3 -m pip install .
+```
+
+## One-command demo
+
+```sh
+directivegraph fixtures/03_override/src/main.py \
   --root fixtures/03_override --format text
-python3 -m directivegraph fixtures/05_public_names/deep/src/task.py \
+```
+
+The synthetic demo reports `AGENTS.override.md` as applied and same-directory `AGENTS.md` as shadowed. Use `python3 -m directivegraph` without installing, or write accessible HTML in one command:
+
+```sh
+directivegraph fixtures/05_public_names/deep/src/task.py \
   --root fixtures/05_public_names --format html --output /tmp/directivegraph.html
+```
+
+## Input and output
+
+- Conservative root-to-target scanning for the documented filenames in [docs/SEMANTICS.md](docs/SEMANTICS.md).
+- Explicit applied/shadowed reasons and per-format precedence-candidate edges.
+- Deterministic `directivegraph.report.v1` JSON, readable text, Graphviz DOT, and accessible script-free HTML.
+- Five synthetic repositories covering root, nested, override, mixed-format, and repository-wide cases.
+
+## Non-goals and limitations
+
+- Not a generic linter, prompt pack, marketplace, agent harness, or prompt assembler.
+- No natural-language conflict inference or model-based scoring.
+- No undocumented or cross-vendor precedence claims.
+- Imports, user/global memory, hooks, skills, generated settings, and most path-glob instructions are outside `0.1.0`.
+- The structural Markdown reader is deliberately not a complete Markdown parser.
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md) · [semantics](docs/SEMANTICS.md) · [API stability](docs/API_STABILITY.md)
+- [Privacy](docs/PRIVACY.md) · [accessibility](docs/ACCESSIBILITY.md) · [troubleshooting](docs/TROUBLESHOOTING.md)
+- [Roadmap](ROADMAP.md) · [changelog](CHANGELOG.md) · [launch kit](docs/LAUNCH_KIT.md)
+- [Scope](SCOPE.md) · [provenance](PROVENANCE.md) · [ecosystem](ECOSYSTEM.md)
+
+## Community and security
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SUPPORT.md](SUPPORT.md), and [GOVERNANCE.md](GOVERNANCE.md) before participating. Report vulnerabilities through the private advisory route in [SECURITY.md](SECURITY.md), never a public issue.
+
+Run the complete local check with:
+
+```sh
 python3 -m unittest discover -s tests -v
 ```
 
-Five independent synthetic repositories under `fixtures/` exercise root-only, nested, override, mixed-vendor, and additional public-filename cases. See [docs/SEMANTICS.md](docs/SEMANTICS.md) for the exact claims this MVP does and does not make.
+## License
 
-## Non-goals
-
-- Another generic linter, prompt pack, skill marketplace, or agent harness.
-- Model-based scoring of writing quality.
-- Inventing undocumented vendor semantics.
-
-## Limitations
-
-- DirectiveGraph does not infer conflicts between natural-language instructions. A precedence edge is a candidate ordering, not a claim that a whole parent file disappears.
-- The Markdown reader extracts lines; it is not a complete Markdown parser.
-- Imports, user/global memory, hooks, skills, path-glob front matter, and generated settings are outside the MVP.
-- Cross-vendor precedence is intentionally never inferred.
-
-- Scope and exclusions: [SCOPE.md](SCOPE.md)
-- Source/provenance log: [PROVENANCE.md](PROVENANCE.md)
-- Initial execution plan: [docs/PLAN.md](docs/PLAN.md)
-
-## Licensing
-
-No public license is granted while this repository is private. Select an OSS license only after ownership and third-party provenance review.
+[MIT](LICENSE) © 2026 Akhilesh Gogikar.

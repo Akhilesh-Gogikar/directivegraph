@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -48,12 +49,27 @@ class DirectiveGraphTest(unittest.TestCase):
         self.assertIn("DirectiveGraph:", render_text(report))
         page = render_html(report)
         self.assertIn("<!doctype html>", page)
+        self.assertIn('href="#report">Skip to report', page)
+        self.assertIn("aria-labelledby=", page)
+        self.assertIn("<h2", page)
         self.assertNotIn("<script src=", page)
         self.assertNotIn("<link rel=", page)
 
     def test_target_outside_root_fails(self):
         with self.assertRaises(DirectiveGraphError):
             analyze(ROOT / "fixtures" / "01_root", ROOT / "README.md")
+
+    def test_top_level_version_does_not_require_target(self):
+        result = subprocess.run(
+            [sys.executable, "-m", "directivegraph", "--version"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "directivegraph 0.1.0\n")
+        self.assertEqual(result.stderr, "")
 
 
 if __name__ == "__main__":

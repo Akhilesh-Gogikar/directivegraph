@@ -6,6 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from . import __version__
 from .core import DirectiveGraphError, analyze, render_dot, render_html, render_text, to_json
 
 
@@ -14,6 +15,7 @@ def parser() -> argparse.ArgumentParser:
         prog="directivegraph",
         description="Explain which nested, documented agent instruction files apply to a target path.",
     )
+    p.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     p.add_argument("target", type=Path, help="target file or directory")
     p.add_argument("--root", type=Path, default=Path.cwd(), help="repository root (default: current directory)")
     p.add_argument("--format", choices=("text", "json", "html", "dot"), default="text")
