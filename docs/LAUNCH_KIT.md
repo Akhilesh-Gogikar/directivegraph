@@ -64,7 +64,7 @@ Do not demo a private repository, real instruction policy, or hand-edited output
 
 ### X
 
-> DirectiveGraph answers: “Which repo instructions reach this file, and why?” Local, zero runtime deps, deterministic text/JSON/DOT/accessible HTML, and no semantic guessing. Five synthetic cases + scoped issues: https://github.com/akigogikar/directivegraph
+> DirectiveGraph answers: “Which repo instructions reach this file, and why?” Local, zero runtime deps, deterministic text/JSON/DOT/accessible HTML, and no semantic guessing. Five synthetic cases + scoped issues: https://github.com/Akhilesh-Gogikar/directivegraph
 
 ## FAQ
 

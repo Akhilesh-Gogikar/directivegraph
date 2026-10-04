@@ -69,7 +69,7 @@ class ProjectMetadataTest(unittest.TestCase):
         self.assertNotIn("/" + "Users" + "/", joined)
         self.assertNotIn("One" + "New", joined)
         ecosystem = (ROOT / "ECOSYSTEM.md").read_text(encoding="utf-8")
-        self.assertEqual(7, len(set(re.findall(r"github\.com/akigogikar/([a-z0-9-]+)", ecosystem))))
+        self.assertEqual(7, len(set(re.findall(r"github\.com/Akhilesh-Gogikar/([a-z0-9-]+)", ecosystem))))
         self.assertIn("optional and informational", ecosystem)
 
     def test_launch_materials_are_complete_and_scoped(self):

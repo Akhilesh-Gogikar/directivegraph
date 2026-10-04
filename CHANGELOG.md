@@ -17,5 +17,5 @@ All notable changes are recorded here. The project follows semantic versioning f
 - Deterministic JSON, text, DOT, and self-contained HTML reports.
 - Five synthetic nested repositories and stdlib tests.
 
-[Unreleased]: https://github.com/akigogikar/directivegraph/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/akigogikar/directivegraph/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Akhilesh-Gogikar/directivegraph/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Akhilesh-Gogikar/directivegraph/releases/tag/v0.1.0

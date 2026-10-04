@@ -24,9 +24,9 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/akigogikar/directivegraph"
-Issues = "https://github.com/akigogikar/directivegraph/issues"
-Changelog = "https://github.com/akigogikar/directivegraph/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Akhilesh-Gogikar/directivegraph"
+Issues = "https://github.com/Akhilesh-Gogikar/directivegraph/issues"
+Changelog = "https://github.com/Akhilesh-Gogikar/directivegraph/blob/main/CHANGELOG.md"
 
 [project.scripts]
 directivegraph = "directivegraph.__main__:main"

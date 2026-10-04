@@ -17,4 +17,4 @@ Run the HTML regression test, traverse the skip link and disclosure with only a 
 
 ## Known limits
 
-Large repositories can produce long pages; graph topology is not narrated beyond ordered cards and embedded JSON; no formal WCAG conformance audit has been completed. [Report an accessibility issue](https://github.com/akigogikar/directivegraph/issues/new?template=bug.yml) and prefix the title with `accessibility:`. Use [SECURITY.md](../SECURITY.md) if disclosure would expose private instructions.
+Large repositories can produce long pages; graph topology is not narrated beyond ordered cards and embedded JSON; no formal WCAG conformance audit has been completed. [Report an accessibility issue](https://github.com/Akhilesh-Gogikar/directivegraph/issues/new?template=bug.yml) and prefix the title with `accessibility:`. Use [SECURITY.md](../SECURITY.md) if disclosure would expose private instructions.

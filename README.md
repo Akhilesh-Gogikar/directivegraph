@@ -1,7 +1,7 @@
 # DirectiveGraph
 
-[![CI](https://github.com/akigogikar/directivegraph/actions/workflows/ci.yml/badge.svg)](https://github.com/akigogikar/directivegraph/actions/workflows/ci.yml)
-[![GitHub License](https://img.shields.io/github/license/akigogikar/directivegraph)](LICENSE)
+[![CI](https://github.com/Akhilesh-Gogikar/directivegraph/actions/workflows/ci.yml/badge.svg)](https://github.com/Akhilesh-Gogikar/directivegraph/actions/workflows/ci.yml)
+[![GitHub License](https://img.shields.io/github/license/Akhilesh-Gogikar/directivegraph)](LICENSE)
 
 ![DirectiveGraph social preview: a hierarchy showing which instructions reach a file](docs/assets/social-preview.png)
 
