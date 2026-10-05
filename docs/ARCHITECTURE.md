@@ -11,7 +11,7 @@ DirectiveGraph is a dependency-free Python package and local CLI.
 5. The graph adds documented same-directory override edges and conservative closer-source candidates within one format. It never orders different vendors.
 6. Renderers emit deterministic JSON, text, DOT, or self-contained HTML.
 
-No stage executes instructions, invokes a model, searches outside the selected ancestry, or makes a network request.
+No stage executes instructions, invokes a model, searches outside the selected ancestry, or makes a network request. Symlinked instruction files on that ancestry are followed; see [SEMANTICS.md](SEMANTICS.md).
 
 ## Determinism
 

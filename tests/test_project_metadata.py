@@ -18,7 +18,7 @@ class ProjectMetadataTest(unittest.TestCase):
             "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "SUPPORT.md",
             "GOVERNANCE.md", "ROADMAP.md", "CHANGELOG.md", "ECOSYSTEM.md", "pyproject.toml",
             "docs/ARCHITECTURE.md", "docs/TROUBLESHOOTING.md", "docs/API_STABILITY.md",
-            "docs/PRIVACY.md", "docs/ACCESSIBILITY.md", "docs/LAUNCH_KIT.md", "docs/ISSUE_SEEDS.md",
+            "docs/PRIVACY.md", "docs/ACCESSIBILITY.md", "docs/ISSUE_SEEDS.md",
             ".github/ISSUE_TEMPLATE/bug.yml", ".github/ISSUE_TEMPLATE/feature.yml",
             ".github/PULL_REQUEST_TEMPLATE.md", ".github/CODEOWNERS", ".github/dependabot.yml",
             ".github/workflows/ci.yml", ".github/workflows/release.yml",
@@ -27,12 +27,12 @@ class ProjectMetadataTest(unittest.TestCase):
 
     def test_package_and_workflow_contract(self):
         project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-        self.assertIn('version = "0.1.0"', project)
+        self.assertIn('version = "0.1.1"', project)
         self.assertIn('dependencies = []', project)
         self.assertIn('license = "MIT"', project)
         self.assertIn('license-files = ["LICENSE"]', project)
         self.assertIn('directivegraph = "directivegraph.__main__:main"', project)
-        self.assertEqual("0.1.0", directivegraph.__version__)
+        self.assertEqual("0.1.1", directivegraph.__version__)
         ci = (ROOT / ".github/workflows/ci.yml").read_text(encoding="utf-8")
         release = (ROOT / ".github/workflows/release.yml").read_text(encoding="utf-8")
         self.assertIn("permissions:\n  contents: read", ci)
@@ -67,9 +67,14 @@ class ProjectMetadataTest(unittest.TestCase):
         self.assertEqual([], broken)
         joined = "\n".join(text)
         self.assertNotIn("/" + "Users" + "/", joined)
-        self.assertNotIn("One" + "New", joined)
         ecosystem = (ROOT / "ECOSYSTEM.md").read_text(encoding="utf-8")
-        self.assertEqual(7, len(set(re.findall(r"github\.com/Akhilesh-Gogikar/([a-z0-9-]+)", ecosystem))))
+        # Allowlist: list and link only public tools, so unreleased siblings stay unnamed.
+        public = {"directivegraph", "releasefence"}
+        entries = [line for line in ecosystem.splitlines() if line.lstrip().startswith(("-", "*", "|"))]
+        self.assertEqual(len(public), len(entries))
+        owner_repos = r"github\.com/Akhilesh-Gogikar/([a-z0-9-]+)"
+        self.assertEqual(public, set(re.findall(owner_repos, ecosystem)))
+        self.assertEqual(set(), set(re.findall(owner_repos, joined)) - public)
         self.assertIn("optional and informational", ecosystem)
 
     def test_launch_materials_are_complete_and_scoped(self):
@@ -77,10 +82,9 @@ class ProjectMetadataTest(unittest.TestCase):
         self.assertEqual(5, len(re.findall(r"^## \d+\. ", seeds, re.MULTILINE)))
         for field in ("**Proposed title:**", "**Labels:**", "**Rationale:**", "**Acceptance criteria**", "**Test plan:**", "**Skills:**", "**Estimated scope:**", "**Likely files:**"):
             self.assertEqual(5, seeds.count(field), field)
-        launch = (ROOT / "docs/LAUNCH_KIT.md").read_text(encoding="utf-8")
-        for section in ("### Hacker News", "### Reddit", "### LinkedIn", "### X", "## FAQ", "## Launch-day checklist", "## First 30 days"):
-            self.assertIn(section, launch)
-        self.assertIn("Never claim", launch)
+        # Maintainer launch planning stays outside the repository.
+        self.assertFalse((ROOT / "docs/LAUNCH_KIT.md").exists())
+        self.assertFalse((ROOT / "docs/PLAN.md").exists())
 
 
 if __name__ == "__main__":

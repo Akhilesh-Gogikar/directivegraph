@@ -50,6 +50,6 @@ No number of commits automatically grants access. Governance and final decisions
 
 ## Triage and recognition
 
-Maintainers target an initial label or question within five business days and a first review of a ready, focused pull request within seven. These are goals, not service guarantees. `needs-triage` means scope is not confirmed; `good first issue` should be independently finishable; `help wanted` has agreed direction but needs an owner; `advanced` needs design review before code.
+Maintainers target an initial label or question within five business days and a first review of a ready, focused pull request within seven. These are goals, not service guarantees. `needs-triage` means scope is not confirmed; `good first issue` should be independently finishable; `help wanted` has agreed direction but needs an owner; `needs-design` or `advanced` needs design review before code; `status: ready` has acceptance criteria and can be claimed; `difficulty: *` and `size: *` estimate effort; `mentored` means a maintainer will guide the work.
 
 Merged contributors are credited in the pull request and relevant changelog or release notes. Substantial design, fixture, accessibility, documentation, and review work should be credited alongside code. Contributors may opt out of public recognition.

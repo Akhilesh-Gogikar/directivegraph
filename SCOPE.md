@@ -8,7 +8,7 @@ Nested AGENTS.md, CLAUDE.md, skills, hooks, and vendor rules create file-specifi
 
 - Parse documented instruction scopes for selected public agent formats.
 - Answer which rule applies to a target file, which rule shadows it, and why.
-- Render a source and precedence graph with cross-vendor differences.
+- Render a source and precedence graph that shows each format side by side without inventing cross-vendor order.
 
 ## Explicit non-goals
 

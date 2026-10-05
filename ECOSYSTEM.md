@@ -1,15 +1,8 @@
-# Ecosystem
+# Akhilesh Gogikar OSS ecosystem
 
-DirectiveGraph is one of seven independent tools by `Akhilesh-Gogikar`. These links are optional and informational: DirectiveGraph does not install, call, endorse output from, or require any other repository.
+These entries are optional and informational. DirectiveGraph does not install, call, endorse output from, require, or exchange data with any other listed tool. Each project has an independent scope, lifecycle, security posture, and installation path. A related tool is listed only after it is public.
 
-| Project | Focus |
-|---|---|
-| [ReleaseFence](https://github.com/Akhilesh-Gogikar/releasefence) | Evidence-based release gates |
-| [Semver Weather](https://github.com/Akhilesh-Gogikar/semver-weather) | Ecosystem compatibility forecasting |
-| [ReviewBus](https://github.com/Akhilesh-Gogikar/reviewbus) | Portable review-event interchange |
-| [SDK WireDiff](https://github.com/Akhilesh-Gogikar/sdk-wirediff) | SDK wire-behavior comparison |
-| [TokenFlame](https://github.com/Akhilesh-Gogikar/tokenflame) | Context token and cost attribution |
-| [MCP Client Autopsy](https://github.com/Akhilesh-Gogikar/mcp-client-autopsy) | Local protocol-client behavior probes |
-| [DirectiveGraph](https://github.com/Akhilesh-Gogikar/directivegraph) | Path-specific agent-instruction traces |
+- [directivegraph](https://github.com/Akhilesh-Gogikar/directivegraph) — path-specific agent-instruction precedence traces.
+- [releasefence](https://github.com/Akhilesh-Gogikar/releasefence) — explainable local checks before a repository release.
 
-No bundle, shared service, data exchange, compatibility guarantee, or coordinated release schedule is implied.
+Availability of one project says nothing about the readiness or support status of another. No bundle, shared service, compatibility guarantee, or coordinated release schedule is implied.

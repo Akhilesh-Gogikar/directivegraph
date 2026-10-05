@@ -8,6 +8,6 @@ Instruction files can expose private repository policy. Do not post proprietary 
 
 ## Enforcement
 
-Report conduct concerns privately to the maintainers through the repository's private reporting channel. Do not use a public issue when a report contains sensitive information. Maintainers may edit or remove content, limit participation, or ban an account based on severity and pattern. They will minimize disclosure and avoid conflicts of interest where practical.
+Report conduct concerns privately through a verified contact method on the maintainer profile at <https://github.com/Akhilesh-Gogikar>. Security vulnerabilities use the separate route in [SECURITY.md](SECURITY.md). Do not use a public issue when a report contains sensitive information. Maintainers may edit or remove content, limit participation, or ban an account based on severity and pattern. They will minimize disclosure and avoid conflicts of interest where practical.
 
 This standard applies in repository issues, pull requests, reviews, discussions, and project events.

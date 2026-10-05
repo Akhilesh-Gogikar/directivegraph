@@ -6,6 +6,6 @@ contact_links:
   - name: Read support boundaries
     url: https://github.com/Akhilesh-Gogikar/directivegraph/blob/main/SUPPORT.md
     about: Check supported questions, synthetic reproductions, and response expectations.
-  - name: Browse contributor-ready issue seeds
-    url: https://github.com/Akhilesh-Gogikar/directivegraph/blob/main/docs/ISSUE_SEEDS.md
-    about: Review five scoped drafts before proposing overlapping work.
+  - name: Browse contributor-ready issues
+    url: https://github.com/Akhilesh-Gogikar/directivegraph/issues?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+ready%22
+    about: Check scoped open work before proposing overlapping changes.
