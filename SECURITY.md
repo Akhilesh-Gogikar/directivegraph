@@ -12,4 +12,4 @@ Security fixes target the latest `0.1.x` release and `main`. Older snapshots are
 
 ## Security boundary
 
-DirectiveGraph reads instruction files beneath a local root and writes reports. It does not execute instruction text, invoke models, or make network requests. The resolved target must remain under the selected root. Reports repeat instruction text, so protect them like the source repository. Very large local files and symlinked instruction sources have not received adversarial hardening.
+DirectiveGraph reads instruction files beneath a local root and writes reports. It does not execute instruction text, invoke models, or make network requests. The resolved target must remain under the selected root. Reports repeat instruction text, so protect them like the source repository. Symlinked instruction files are currently followed, including targets outside the root, until a containment policy lands; do not run DirectiveGraph on untrusted trees you would not otherwise read. Very large local files have not received adversarial hardening.

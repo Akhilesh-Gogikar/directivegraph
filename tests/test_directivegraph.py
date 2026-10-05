@@ -68,7 +68,7 @@ class DirectiveGraphTest(unittest.TestCase):
             text=True,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout, "directivegraph 0.1.0\n")
+        self.assertEqual(result.stdout, "directivegraph 0.1.1\n")
         self.assertEqual(result.stderr, "")
 
 

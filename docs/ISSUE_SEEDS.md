@@ -1,19 +1,19 @@
 # Issue seeds
 
-These are launch-ready drafts, not proof that an issue has been filed. Maintainers should confirm scope, create only the issues they intend to triage, and keep one owner per issue.
+These five work packages are filed as issues [#4](https://github.com/Akhilesh-Gogikar/directivegraph/issues/4) through [#8](https://github.com/Akhilesh-Gogikar/directivegraph/issues/8). The live issues are authoritative; this file keeps their original scope reviewable next to the code. Keep one owner per issue.
 
 ## 1. Protect instruction files from accidental output overwrite
 
-**Proposed title:** `Protect instruction files from accidental --output overwrite`
+**Proposed title:** `Protect instruction files from accidental output overwrite`
 
-**Labels:** `good first issue`, `bug`, `safety`, `needs-triage`
+**Labels:** `bug`, `good first issue`, `help wanted`, `safety`, `difficulty: beginner`, `size: S`, `mentored`, `status: ready`
 
 **Rationale:** analysis completes before output is written, but a user can point `--output` at an applicable instruction file and destroy source data. The CLI should fail closed.
 
 **Acceptance criteria**
 
 - Resolve the output path before writing and reject it when it aliases the target or any discovered instruction source.
-- Cover direct paths, normalized `..` paths, and symlink aliases supported by the chosen platform policy.
+- Cover direct paths and normalized `..` paths. Symlink aliases follow the policy from seed 4 (#7) once it lands.
 - Exit with code `2`, name the conflicting root-relative path when safe, and leave the file byte-for-byte unchanged.
 - Normal output behavior remains unchanged.
 
@@ -27,9 +27,9 @@ These are launch-ready drafts, not proof that an issue has been filed. Maintaine
 
 **Proposed title:** `Add deterministic JSON snapshots for all five synthetic repositories`
 
-**Labels:** `good first issue`, `testing`, `fixtures`, `needs-triage`
+**Labels:** `good first issue`, `help wanted`, `testing`, `fixtures`, `difficulty: beginner`, `size: M`, `mentored`, `status: ready`
 
-**Rationale:** current tests assert important fields, but reviewed snapshots would make unintended schema, reason-text, ordering, and ID changes obvious.
+**Rationale:** current tests assert important fields and check that two runs produce identical JSON, but reviewed snapshots would make unintended schema, reason-text, ordering, and ID changes obvious.
 
 **Acceptance criteria**
 
@@ -48,9 +48,9 @@ These are launch-ready drafts, not proof that an issue has been filed. Maintaine
 
 **Proposed title:** `Group wrapped Markdown list continuations into one extracted rule`
 
-**Labels:** `help wanted`, `parser`, `compatibility`, `needs-design`
+**Labels:** `help wanted`, `parser`, `compatibility`, `needs-design`, `difficulty: intermediate`, `size: M`, `status: ready`
 
-**Rationale:** `_parse_rules` treats each non-empty line as a rule. A visually wrapped list item therefore becomes multiple rules, which weakens line attribution and report readability.
+**Rationale:** `_parse_rules` skips headings, fenced code, and single-line HTML comments and strips list markers, but every other non-empty line becomes its own rule. A visually wrapped list item therefore becomes multiple rules, which weakens line attribution and report readability.
 
 **Acceptance criteria**
 
@@ -69,9 +69,9 @@ These are launch-ready drafts, not proof that an issue has been filed. Maintaine
 
 **Proposed title:** `Define and implement a symlink policy for instruction sources`
 
-**Labels:** `help wanted`, `security`, `filesystem`, `needs-design`
+**Labels:** `help wanted`, `security`, `filesystem`, `needs-design`, `difficulty: intermediate`, `size: L`, `status: ready`
 
-**Rationale:** target containment is resolved, but symlinked instruction files have not received an explicit trust-boundary policy. Reports must not unexpectedly read outside the selected root.
+**Rationale:** target containment is resolved, but symlinked instruction files are followed today, including targets outside `--root`, so their text can appear in a report. Reports must not unexpectedly read outside the selected root.
 
 **Acceptance criteria**
 
@@ -90,7 +90,7 @@ These are launch-ready drafts, not proof that an issue has been filed. Maintaine
 
 **Proposed title:** `Add documented path-glob instruction applicability`
 
-**Labels:** `advanced`, `semantics`, `import-format`, `provenance-required`
+**Labels:** `advanced`, `semantics`, `import-format`, `provenance-required`, `needs-design`, `difficulty: advanced`, `size: L`, `status: ready`
 
 **Rationale:** some public instruction formats scope files with documented path patterns. Supporting one could answer more target-specific questions, but only if matching and precedence are modeled without cross-format invention.
 

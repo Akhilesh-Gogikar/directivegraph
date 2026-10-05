@@ -7,7 +7,7 @@
 
 **Ask one file which instructions reach it—and why.** DirectiveGraph turns a repository path into a conservative, source-linked precedence trace.
 
-> **Status: 0.1.0 alpha.** Source installation is supported; no package registry publication has occurred. See the evidence and limitations in [docs/LAUNCH_KIT.md](docs/LAUNCH_KIT.md).
+> **Status: 0.1.1 alpha.** Source installation is supported; no package registry publication has occurred. See the [limitations](#non-goals-and-limitations) below.
 
 ## Why
 
@@ -54,14 +54,14 @@ directivegraph fixtures/05_public_names/deep/src/task.py \
 - Not a generic linter, prompt pack, marketplace, agent harness, or prompt assembler.
 - No natural-language conflict inference or model-based scoring.
 - No undocumented or cross-vendor precedence claims.
-- Imports, user/global memory, hooks, skills, generated settings, and most path-glob instructions are outside `0.1.0`.
+- Imports, user/global memory, hooks, skills, generated settings, and most path-glob instructions are outside `0.1.x`.
 - The structural Markdown reader is deliberately not a complete Markdown parser.
 
 ## Documentation
 
 - [Architecture](docs/ARCHITECTURE.md) · [semantics](docs/SEMANTICS.md) · [API stability](docs/API_STABILITY.md)
 - [Privacy](docs/PRIVACY.md) · [accessibility](docs/ACCESSIBILITY.md) · [troubleshooting](docs/TROUBLESHOOTING.md)
-- [Roadmap](ROADMAP.md) · [changelog](CHANGELOG.md) · [launch kit](docs/LAUNCH_KIT.md)
+- [Roadmap](ROADMAP.md) · [changelog](CHANGELOG.md)
 - [Scope](SCOPE.md) · [provenance](PROVENANCE.md) · [ecosystem](ECOSYSTEM.md) · [issue seeds](docs/ISSUE_SEEDS.md)
 
 ## A focused contribution is welcome
